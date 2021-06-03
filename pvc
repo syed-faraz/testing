@@ -1,0 +1,23 @@
+volumes:
+  - name: product
+      persistentVolumeClaim:
+        claimName: pvc-data
+
+volumeMounts:
+  - name: product
+      mountPath: /var/www/html/pub/media/catalog/product
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-data
+  namespace: 
+  labels:
+    name:
+    app:
+spec:
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: "1Gi"
